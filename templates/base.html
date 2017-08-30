@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'defaults/head.html' %}
+    <title>{% block title %}Dapang TV{% endblock title %}</title>
+</head>
+
+<body>
+
+  <!-- Head Menu -->
+  <div class="ui inverted stackable menu" style="border-radius: 0;">
+    <div class="large header item">
+      Ruibo Liu
+    </div>
+    <a class="item active">Home</a>
+    <a class="item" href="http://blog.rbliu.net">Blog</a>
+    <a class="item">Projects</a>
+    <a class="item">Resume</a>
+    <a class="item">Vault</a>
+    <a class="right item">
+    <button class="ui inverted grey button">Contact</button>
+    </a>
+  </div>
+
+  {% block content %}
+  {% endblock content %}
+
+  <!-- Footer -->
+  {% include 'defaults/footer.html' %}
+
+  <!-- Scripts -->
+  {% include 'defaults/scripts.html' %}
+
+</body>
+
+</html>

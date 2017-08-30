@@ -1,0 +1,17 @@
+<div class="ui category search">
+  <div class="ui icon input">
+    <form method='GET' action="{% url 'videos:list' %}">
+        <input class="prompt" type="text" placeholder="Search..." name="q" value="{{ request.GET.q }}">
+    </form>
+    <i class="search icon"></i>
+  </div>
+  <div class="results"></div>
+</div>
+
+{#<form method='GET' action="{% url 'video-list' %}">#}
+{#    <input type="text" placeholder="Search..." name="q" value="{{ request.GET.q }}">#}
+{#</form>#}
+
+{% if request.GET.q %}
+    <p>You searched for <b>{{ request.GET.q }}</b></p>
+{% endif %}

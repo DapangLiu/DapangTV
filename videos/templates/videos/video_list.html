@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Videos | {{ block.super }} {% endblock title %}
+
+{% block content %}
+
+    <div class="ui container" style="padding: 30px;">
+
+        <h2 class="ui dividing header">Videos List</h2>
+
+        {% include "videos/video_search.html" with request=request %}
+
+        <ul>
+        {% for item in object_list %}
+            <li><a href="{{ item.get_absolute_url }}">{{ item.title }} </a></li>
+
+            {% empty %}
+            <li>No item found.</li>
+        {% endfor %}
+        </ul>
+
+    </div>
+
+{% endblock content %}

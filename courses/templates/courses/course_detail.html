@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Courses | {{ block.super }} {% endblock title %}
+
+{% block content %}
+
+    <div class="ui container" style="padding: 30px;">
+
+        <div class="ui large header">
+            Video Detail
+        </div>
+
+        {% include "courses/course_search.html" with request=request %}
+
+        {{ object.embed_code | safe }}
+
+    </div>
+
+{% endblock content %}
