@@ -12,16 +12,7 @@
 
         {% include "courses/course_search.html" with request=request %}
 
-        {{ object.embed_code | safe }}
-
-        {% for item in object.lecture_set.all %}
-            <li><a href="{{ item.get_absolute_url }}">
-                {{ item.title }}</a>
-            </li>
-
-            {% empty %}
-            <li>No lecture found.</li>
-        {% endfor %}
+        {{ object.video.embed_code | safe }}
 
     </div>
 

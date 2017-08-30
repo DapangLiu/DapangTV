@@ -12,8 +12,8 @@ def create_slug(instance, new_slug=None):
         slug = slugify(instance.title)
     else:
         slug = new_slug
-    Klass = instance.__class__
-    qs = Klass.objects.filter(slug=slug).order_by('-id')
+    certain_class = instance.__class__
+    qs = certain_class.objects.filter(slug=slug).order_by('-id')
     if qs.exists():
         string_unique = unique_string_generator()
         newly_created_slug = slug + "-{id_}".format(id_=string_unique)

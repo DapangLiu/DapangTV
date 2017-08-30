@@ -11,6 +11,7 @@ from django.views.generic import (
 )
 
 from .models import Course
+from .models import Lecture
 from .forms import CourseForm
 from videos.mixins import MemberRequiredMixin, StaffMemberRequired
 
@@ -38,6 +39,18 @@ class CourseDetailView(MemberRequiredMixin, DetailView):
             return obj.first()
         raise Http404
 
+
+# Lecture Detail
+class LectureDetailView(MemberRequiredMixin, DetailView):
+    # 解决重复问题
+    def get_object(self):
+        course_slug = self.kwargs.get("cslug")
+        lecture_slug = self.kwargs.get("lslug")
+        obj = get_object_or_404(Lecture, course__slug=course_slug, slug=lecture_slug)
+        # course_obj = Course.objects.get(slug=course_slug)
+        # lecture_obj = Lecture.objects.get(course=course_obj, slug=lecture_slug)
+        # obj = Lecture.objects.filter(course_slug=course_slug, slug=lecture_slug).first()
+        return obj
 
 # Video List
 class CourseListView(ListView):
