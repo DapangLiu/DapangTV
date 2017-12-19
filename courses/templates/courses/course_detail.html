@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% load humanize %}
 
 {% block title %} Courses | {{ block.super }} {% endblock title %}
 
 {% block content %}
 
-    <div class="ui container" style="padding: 30px;">
+    <p class="ui container" style="padding: 30px;">
 
         <div class="ui large header">
             Video Detail
@@ -12,17 +13,17 @@
 
         {% include "courses/course_search.html" with request=request %}
 
-        {{ object.embed_code | safe }}
+        {{ object.description | safe }}
+        {{ object.display_price }}
+
 
         {% for item in object.lecture_set.all %}
-            <li><a href="{{ item.get_absolute_url }}">
+            <li>{{ item.order }}<a href="{{ item.get_absolute_url }}">
                 {{ item.title }}</a>
             </li>
 
             {% empty %}
             <li>No lecture found.</li>
         {% endfor %}
-
-    </div>
 
 {% endblock content %}
